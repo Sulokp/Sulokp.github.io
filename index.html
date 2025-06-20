@@ -1,51 +1,306 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Sulok Pandey</title>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta name="author" content="Sulok Pandey">
-    <meta name="description" content="This is the home page of my personal website.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Sulok" />
-    <meta property="og:type" content="home" />
-    <meta property="og:url" content="http://127.0.0.1:5500/index.html" />
-    <meta property="og:image" content="https://www.facebook.com/photo/?fbid=1574044372936978&set=a.823168371357919"/>
+    <title>Sulok Pandey - Computer Science Graduate</title>
+    <meta name="author" content="Sulok Pandey">
+    <meta name="description" content="Personal website of Sulok Pandey - Computer Science graduate specializing in full-stack development with React and .NET C#">
+    <meta property="og:title" content="Sulok Pandey - Computer Science Graduate" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Personal website showcasing skills, projects, and experience in computer science" />
     <meta name="robots" content="index, follow">
-    <link rel="stylesheet" type="text/css" href="CSSS/index.css">
-    <script src="JSS/index.js"></script>
-  </head>
-  <body style="background-image: url(back.jpg);">
-    <header>
-      <img src="Sulok.jpg" alt="Logo" id="logo">
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="page1.html">Hobbies</a></li>
-          <li><a href="page2.html">Family</a></li>
-          <li><a href="page3.html">Education</a></li>
-          <li><a href="page4.html">Skills</a></li>
-          <li><a href="https://sulok7.wordpress.com/" target="_blank">Blog</a></li>
-          <li><a href="references.html">References</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <h1>Welcome to My Website</h1>
-      <p>Hi, I'm Sulok Pandey. I'm a student in Herald College kathmandu pursuing my Bachleor's degree in BSc (Hons) Computer Science. This is my personal website where you can learn about my interests, skills, education, and more. Take a look around and think it as your own place.</p>
-      <img src="cover.jpg" alt="cover">
-      
-      <div class="message-box">
-        <p>Leave a message:</p>
-        <textarea rows="4" cols="50"></textarea>
-        <br><br>
-        <button>Submit</button>
-      </div>
-    </main>
-    <footer>
-      <a href="CV.png" download>
-        <span id="downloadText">Download CV</span>
-      </a>
-      <p>Copyright © 2023 by Sulok Pandey</p>
-    </footer>
-  </body>
-</html>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #667eea;
+        }
+
+        .logo h2 {
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 100px;
+            padding: 2rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #555;
+        }
+
+        .languages {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .language-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Sections */
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            background: #f8f9ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.3rem 0;
+            color: #555;
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            color: #667eea;
+            margin-right: 0.5rem;
+        }
+
+        /* Education Timeline */
+        .education-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #667eea;
+        }
+
+        .education-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: #f8f9ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-left: 1rem;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .education-item h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .institution {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .grade {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        /* Project Highlight */
+        .project-highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .project-highlight h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Message Box */
+        .message-box {
+            background: #f8f9ff;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .message-box h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .message-box textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            resize: vertical;
+            transition: border-color 0.3
