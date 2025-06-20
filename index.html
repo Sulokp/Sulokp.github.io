@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sulok Pandey - Computer Science Graduate</title>
     <meta name="author" content="Sulok Pandey">
-    <meta name="description" content="Personal website of Sulok Pandey - Computer Science graduate specializing in full-stack development with React and .NET C#">
+    <meta name="description" content="Personal website of Sulok Pandey - Computer Science graduate specializing in full-stack development">
     <meta property="og:title" content="Sulok Pandey - Computer Science Graduate" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Personal website showcasing skills, projects, and experience in computer science" />
     <meta name="robots" content="index, follow">
     <style>
         * {
@@ -36,18 +35,18 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
             z-index: 1000;
-            transition: all 0.3s ease;
+            padding: 1rem 0;
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo {
@@ -56,12 +55,17 @@
             gap: 15px;
         }
 
-        .logo img {
+        .logo-circle {
             width: 50px;
             height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
         .logo h2 {
@@ -72,39 +76,26 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         nav a {
             text-decoration: none;
             color: #333;
             font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
 
         nav a:hover {
-            color: #667eea;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #667eea;
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
+            background: #667eea;
+            color: white;
         }
 
         /* Main Content */
         main {
-            margin-top: 100px;
             padding: 2rem 0;
         }
 
@@ -112,7 +103,7 @@
         .hero {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            padding: 3rem;
+            padding: 3rem 2rem;
             margin-bottom: 2rem;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -122,6 +113,9 @@
             font-size: 3rem;
             color: #333;
             margin-bottom: 1rem;
+        }
+
+        .hero .name-highlight {
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -129,76 +123,120 @@
         }
 
         .hero .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #666;
             margin-bottom: 2rem;
+            font-weight: 500;
         }
 
         .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
             margin-bottom: 2rem;
+            text-align: left;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
             color: #555;
+            background: #f8f9ff;
+            padding: 1rem;
+            border-radius: 10px;
+            justify-content: center;
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
         }
 
         .languages {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
         }
 
         .language-tag {
             background: #667eea;
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
         /* Sections */
         .section {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             margin-bottom: 2rem;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .section h2 {
             color: #333;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
             margin-bottom: 1.5rem;
-            font-size: 2rem;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5rem;
         }
 
         /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .skill-category {
-            background: #f8f9ff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
+            background: linear-gradient(135deg, #f8f9ff, #e8f0ff);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
         }
 
         .skill-category h3 {
             color: #333;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            text-align: center;
         }
 
         .skill-list {
@@ -206,101 +244,565 @@
         }
 
         .skill-list li {
-            padding: 0.3rem 0;
+            padding: 0.5rem 0;
             color: #555;
+            font-size: 1rem;
         }
 
         .skill-list li::before {
-            content: '▸';
+            content: '✓';
             color: #667eea;
-            margin-right: 0.5rem;
+            font-weight: bold;
+            margin-right: 0.8rem;
         }
 
         /* Education Timeline */
         .education-timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .education-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #667eea;
+            max-width: 800px;
+            margin: 2rem auto;
         }
 
         .education-item {
-            position: relative;
+            background: linear-gradient(135deg, #f8f9ff, #e8f0ff);
+            padding: 2rem;
+            border-radius: 15px;
             margin-bottom: 2rem;
-            background: #f8f9ff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-left: 1rem;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease;
         }
 
-        .education-item::before {
-            content: '';
-            position: absolute;
-            left: -1.75rem;
-            top: 1.5rem;
-            width: 12px;
-            height: 12px;
-            background: #667eea;
-            border-radius: 50%;
-            border: 3px solid white;
+        .education-item:hover {
+            transform: translateX(10px);
         }
 
         .education-item h3 {
             color: #333;
             margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
 
         .education-item .institution {
             color: #667eea;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
         .education-item .grade {
             color: #28a745;
             font-weight: 600;
+            font-size: 1rem;
         }
 
-        /* Project Highlight */
+        .education-item .year {
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Project Sections */
         .project-highlight {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 15px;
             margin: 2rem 0;
+            text-align: center;
         }
 
         .project-highlight h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
+        }
+
+        .project-highlight p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-secondary {
+            background: linear-gradient(135deg, #f8f9ff, #e8f0ff);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border-left: 5px solid #28a745;
+        }
+
+        .project-secondary h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info-card {
+            background: linear-gradient(135deg, #f8f9ff, #e8f0ff);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-info-card h3 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            space-y: 1rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #555;
         }
 
         /* Message Box */
         .message-box {
-            background: #f8f9ff;
+            background: linear-gradient(135deg, #f8f9ff, #e8f0ff);
             padding: 2rem;
             border-radius: 15px;
-            margin-top: 2rem;
         }
 
         .message-box h3 {
             color: #333;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
 
-        .message-box textarea {
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
             width: 100%;
             padding: 1rem;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
             resize: vertical;
-            transition: border-color 0.3
+            min-height: 120px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .download-cv {
+            background: #28a745;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .download-cv:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .social-links a {
+            color: #0077b5;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #005885;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-circle">SP</div>
+                    <h2>Sulok Pandey</h2>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="https://sulok7.wordpress.com/" target="_blank">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Hero Section -->
+            <section id="home" class="hero">
+                <h1>Welcome! I'm <span class="name-highlight">Sulok Pandey</span></h1>
+                <p class="subtitle">Computer Science Graduate | Full-Stack Developer</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <span>+977-9868940368</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <span>sulokpandey4932@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>Dhapasi Height, Tokha, Kathmandu</span>
+                    </div>
+                </div>
+
+                <div class="languages">
+                    <span class="language-tag">English</span>
+                    <span class="language-tag">Nepali</span>
+                    <span class="language-tag">Hindi</span>
+                </div>
+
+                <img src="/placeholder.svg?height=300&width=500" alt="Sulok Pandey" style="max-width: 100%; height: auto; border-radius: 15px; margin-top: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="section">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <p>A motivated and hardworking Computer Science graduate, committed to delivering excellence and continuous growth. I bring a confident and competent attitude, with a strong desire to apply my skills and contribute meaningfully to any organization I join.</p>
+                    
+                    <p>Currently awaiting graduation after completing my BSc (Hons) in Computer Science from Herald College Kathmandu. I have developed expertise in full-stack development, problem-solving, and logical programming through various academic projects and practical applications.</p>
+                    
+                    <p>Welcome to my personal website where you can learn about my interests, skills, education, and projects. Take a look around and feel free to explore - think of it as your own place!</p>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="section">
+                <h2>Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>🚀 Full-Stack Development</h3>
+                        <ul class="skill-list">
+                            <li>React.js - Frontend Development</li>
+                            <li>.NET C# - Backend Development</li>
+                            <li>Web Application Development</li>
+                            <li>Database Design & Management</li>
+                            <li>API Development & Integration</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>💻 Programming Languages</h3>
+                        <ul class="skill-list">
+                            <li>C# (Intermediate Level)</li>
+                            <li>Java (Basic Level)</li>
+                            <li>Python (Basic Level)</li>
+                            <li>JavaScript (Web Development)</li>
+                            <li>HTML/CSS (Frontend)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>🧠 Core Competencies</h3>
+                        <ul class="skill-list">
+                            <li>Problem Solving & Analysis</li>
+                            <li>Logical Programming</li>
+                            <li>Algorithm Design</li>
+                            <li>System Development</li>
+                            <li>Project Management</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education" class="section">
+                <h2>Education Journey</h2>
+                <div class="education-timeline">
+                    <div class="education-item">
+                        <h3>Bachelor's Degree in Computer Science</h3>
+                        <div class="institution">Herald College Kathmandu</div>
+                        <p>BSc (Hons) Computer Science</p>
+                        <div class="year">2022-2025</div>
+                        <div class="grade">Currently Awaiting Graduation</div>
+                    </div>
+                    <div class="education-item">
+                        <h3>High School Degree in Science</h3>
+                        <div class="institution">Herald Secondary School, Basundhara, Kathmandu</div>
+                        <div class="grade">Grade: 3.39 (A)</div>
+                    </div>
+                    <div class="education-item">
+                        <h3>Secondary Education Examination (S.E.E)</h3>
+                        <div class="institution">Araniko English Boarding School, Madhuban, Bardiya</div>
+                        <div class="grade">Grade: 3.55 (A)</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="section">
+                <h2>Featured Projects</h2>
+                
+                <div class="project-highlight">
+                    <h3>🏠 Hamro Sewa - Household Services Platform</h3>
+                    <p>A comprehensive full-stack platform built using React and .NET C#, designed to allow users to conveniently hire professionals for household services. This project demonstrates my capability to design, develop, and deploy practical, user-focused solutions using modern web technologies.</p>
+                    <p><strong>Key Features:</strong> User registration, service booking, professional profiles, payment integration, and real-time notifications.</p>
+                    <p><strong>Technologies Used:</strong> React.js, .NET C#, Database Management, RESTful APIs, Full-Stack Development</p>
+                </div>
+                
+                <div class="project-secondary">
+                    <h3>💰 Tax Calculation System</h3>
+                    <p>Developed a comprehensive tax calculation tool demonstrating algorithm design and problem-solving skills. This project showcases my ability to create practical solutions for real-world financial problems with accurate calculations and user-friendly interface.</p>
+                    <p><strong>Technologies:</strong> Algorithm Design, Mathematical Computing, User Interface Development</p>
+                </div>
+
+                <div class="project-secondary">
+                    <h3>🔧 Additional Academic Projects</h3>
+                    <p>Throughout my academic journey, I have undertaken several projects that reflect my programming skills and problem-solving abilities, including algorithm design challenges, data structure implementations, and various programming assignments that have strengthened my foundation in computer science.</p>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <h2>Get In Touch</h2>
+                <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem; color: #666;">I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-info-card">
+                        <h3>📞 Contact Information</h3>
+                        <div class="contact-details">
+                            <div class="contact-detail">
+                                <span>📱</span>
+                                <span>+977-9868940368</span>
+                            </div>
+                            <div class="contact-detail">
+                                <span>📧</span>
+                                <span>sulokpandey4932@gmail.com</span>
+                            </div>
+                            <div class="contact-detail">
+                                <span>🏠</span>
+                                <span>Dhapasi Height, Tokha, Kathmandu</span>
+                            </div>
+                            <div class="contact-detail">
+                                <span>💼</span>
+                                <a href="#" style="color: #0077b5; text-decoration: none;">LinkedIn Profile</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-box">
+                        <h3>💬 Leave a Message</h3>
+                        <form onsubmit="submitMessage(event)">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" placeholder="Tell me about your project or just say hello!" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message 📤</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="CV.png" download class="download-cv">
+                    📄 Download My CV
+                </a>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/sulokpandey" target="_blank">LinkedIn Profile</a>
+                    <span style="color: #666; margin: 0 1rem;">|</span>
+                    <a href="https://sulok7.wordpress.com/" target="_blank">Visit My Blog</a>
+                </div>
+            </div>
+            <p style="color: #ccc;">Copyright © 2023 by Sulok Pandey. All rights reserved.</p>
+            <p style="color: #999; font-size: 0.9rem; margin-top: 0.5rem;">Built with passion for web development 💻</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Message submission
+        function submitMessage(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                alert(`Thank you ${name}! Your message has been received. I'll get back to you at ${email} soon.`);
+                document.querySelector('form').reset();
+            }
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to skill categories
+            const skillCategories = document.querySelectorAll('.skill-category');
+            skillCategories.forEach(category => {
+                category.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                category.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add scroll animation for sections
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
