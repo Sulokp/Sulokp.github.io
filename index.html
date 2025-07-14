@@ -25,14 +25,14 @@
             --text-dark: #333333;
             --shadow-gold: rgba(212, 175, 55, 0.3);
             --shadow-dark: rgba(0, 0, 0, 0.5);
+            --header-bg-scrolled: rgba(26, 26, 26, 0.98);
+            --header-shadow-scrolled: 0 10px 30px var(--shadow-dark);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Inter', sans-serif;
             background: var(--dark-primary);
@@ -40,7 +40,6 @@
             overflow-x: hidden;
             position: relative;
         }
-
         /* Game Elements */
         .score-display {
             position: fixed;
@@ -57,11 +56,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .score-display:hover {
             transform: scale(1.1) rotate(5deg);
         }
-
         .floating-coins {
             position: fixed;
             top: 0;
@@ -71,7 +68,6 @@
             pointer-events: none;
             z-index: -1;
         }
-
         .coin {
             position: absolute;
             width: 30px;
@@ -84,7 +80,6 @@
             box-shadow: 0 0 20px var(--shadow-gold);
             transition: all 0.3s ease;
         }
-
         .coin::before {
             content: '₹';
             position: absolute;
@@ -95,19 +90,16 @@
             font-weight: bold;
             font-size: 16px;
         }
-
         .coin:hover {
             transform: scale(1.3) rotate(180deg);
             box-shadow: 0 0 30px var(--gold-primary);
         }
-
         @keyframes floatCoin {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             25% { transform: translateY(-20px) rotate(90deg); }
             50% { transform: translateY(0px) rotate(180deg); }
             75% { transform: translateY(-15px) rotate(270deg); }
         }
-
         /* Interactive Background */
         .interactive-bg {
             position: fixed;
@@ -119,7 +111,6 @@
             z-index: -2;
             transition: all 0.5s ease;
         }
-
         .bg-particles {
             position: fixed;
             top: 0;
@@ -128,7 +119,6 @@
             height: 100%;
             z-index: -1;
         }
-
         .particle {
             position: absolute;
             background: var(--gold-primary);
@@ -136,37 +126,33 @@
             opacity: 0.6;
             animation: particleFloat 6s infinite ease-in-out;
         }
-
         @keyframes particleFloat {
             0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
             50% { transform: translateY(-30px) scale(1.2); opacity: 1; }
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-
         /* Header */
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 2px solid var(--gold-primary);
+            background: rgba(26, 26, 26, 0.9); /* Slightly more transparent */
+            backdrop-filter: blur(15px); /* Softer blur */
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3); /* Subtler border */
             z-index: 1000;
-            padding: 15px 0;
-            transition: all 0.3s ease;
+            padding: 12px 0; /* Slightly less padding */
+            transition: all 0.4s ease-in-out; /* Smoother transition */
         }
-
         header.scrolled {
-            background: rgba(26, 26, 26, 0.98);
-            box-shadow: 0 10px 30px var(--shadow-dark);
+            background: var(--header-bg-scrolled);
+            box-shadow: var(--header-shadow-scrolled);
+            border-bottom: 1px solid var(--gold-primary); /* More prominent when scrolled */
         }
-
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -174,35 +160,32 @@
             flex-wrap: wrap;
             gap: 15px;
         }
-
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px; /* Slightly less gap */
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .logo:hover {
-            transform: scale(1.05);
+            transform: scale(1.02); /* Subtler scale */
         }
-
         .logo-circle {
-            width: 60px;
-            height: 60px;
+            width: 55px; /* Slightly smaller */
+            height: 55px;
             border-radius: 50%;
             overflow: hidden;
-            border: 3px solid var(--gold-primary);
+            border: 2px solid var(--gold-primary); /* Thinner border */
             background: var(--dark-primary);
-            padding: 3px;
+            padding: 2px;
             transition: all 0.3s ease;
             position: relative;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); /* Soft initial shadow */
         }
-
         .logo-circle img {
             width: 100%;
             height: 100%;
@@ -211,35 +194,41 @@
             transition: all 0.3s ease;
             background: var(--dark-primary);
         }
-
+        .logo-circle:hover {
+            box-shadow: 0 0 25px var(--gold-primary); /* More prominent on hover */
+            transform: rotate(5deg); /* Slight rotation */
+        }
         .logo h2 {
             color: var(--gold-primary);
-            font-size: 1.8rem;
+            font-size: 1.7rem; /* Slightly smaller */
             font-weight: 700;
             font-family: 'Playfair Display', serif;
-            text-shadow: 2px 2px 4px var(--shadow-dark);
+            text-shadow: 1px 1px 3px var(--shadow-dark); /* Softer shadow */
+            transition: all 0.3s ease;
         }
-
+        .logo:hover h2 {
+            color: var(--gold-light); /* Change color on hover */
+            text-shadow: 0 0 15px var(--gold-primary); /* Glow effect */
+        }
         nav ul {
             display: flex;
             list-style: none;
-            gap: 10px;
+            gap: 8px; /* Tighter spacing */
             flex-wrap: wrap;
         }
-
         nav a {
             text-decoration: none;
             color: var(--text-light);
             font-weight: 500;
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 8px 16px; /* Smaller padding */
+            border-radius: 20px; /* Softer corners */
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            font-size: 14px;
-            border: 2px solid transparent;
+            font-size: 13px; /* Slightly smaller font */
+            border: 1px solid transparent; /* Thinner border */
+            background: rgba(255, 255, 255, 0.05); /* Subtle background */
         }
-
         nav a::before {
             content: '';
             position: absolute;
@@ -251,42 +240,36 @@
             transition: left 0.3s ease;
             z-index: -1;
         }
-
         nav a:hover::before {
             left: 0;
         }
-
         nav a:hover {
             color: var(--dark-primary);
             border-color: var(--gold-primary);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px var(--shadow-gold);
+            transform: translateY(-1px); /* Subtler lift */
+            box-shadow: 0 5px 15px var(--shadow-gold); /* Softer shadow */
         }
-
         /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
-            border: 2px solid var(--gold-primary);
+            border: 1px solid var(--gold-primary); /* Thinner border */
             color: var(--gold-primary);
-            font-size: 18px;
+            font-size: 16px; /* Slightly smaller icon */
             cursor: pointer;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 8px; /* Smaller padding */
+            border-radius: 6px; /* Softer corners */
             transition: all 0.3s ease;
         }
-
         .mobile-menu-btn:hover {
             background: var(--gold-primary);
             color: var(--dark-primary);
-            transform: rotate(90deg);
+            transform: rotate(45deg); /* More subtle rotation */
         }
-
         /* Main Content */
         main {
-            padding-top: 100px;
+            padding-top: 80px; /* Adjusted for new header height */
         }
-
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -297,7 +280,6 @@
             position: relative;
             padding: 20px;
         }
-
         .hero-content {
             background: rgba(45, 45, 45, 0.9);
             backdrop-filter: blur(20px);
@@ -311,7 +293,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .hero-content::before {
             content: '';
             position: absolute;
@@ -324,17 +305,14 @@
             z-index: -1;
             animation: borderGlow 3s linear infinite;
         }
-
         @keyframes borderGlow {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
         .hero-content:hover {
             transform: translateY(-10px);
             box-shadow: 0 30px 80px var(--shadow-dark);
         }
-
         .hero h1 {
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-family: 'Playfair Display', serif;
@@ -343,7 +321,6 @@
             color: var(--text-light);
             position: relative;
         }
-
         .name-highlight {
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
             -webkit-background-clip: text;
@@ -354,19 +331,16 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .name-highlight:hover {
             transform: scale(1.1);
             filter: drop-shadow(0 0 20px var(--gold-primary));
         }
-
         .hero .subtitle {
             font-size: clamp(1rem, 3vw, 1.4rem);
             color: var(--cream);
             margin-bottom: 30px;
             font-weight: 400;
         }
-
         .hero-image {
             width: 180px;
             height: 180px;
@@ -380,7 +354,6 @@
             cursor: pointer;
             position: relative;
         }
-
         .hero-image::before {
             content: '';
             position: absolute;
@@ -391,17 +364,14 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-
         .hero-image:hover::before {
             opacity: 1;
             animation: pulse 1s ease infinite;
         }
-
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
-
         .hero-image img {
             width: 100%;
             height: 100%;
@@ -409,18 +379,15 @@
             border-radius: 50%;
             transition: all 0.3s ease;
         }
-
         .hero-image:hover img {
             transform: scale(1.05);
         }
-
         .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin: 30px 0;
         }
-
         .contact-item {
             display: flex;
             align-items: center;
@@ -436,7 +403,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .contact-item::before {
             content: '';
             position: absolute;
@@ -448,27 +414,22 @@
             transition: left 0.5s ease;
             opacity: 0.3;
         }
-
         .contact-item:hover::before {
             left: 100%;
         }
-
         .contact-item:hover {
             transform: translateY(-5px) scale(1.02);
             background: rgba(212, 175, 55, 0.2);
             box-shadow: 0 15px 35px var(--shadow-gold);
         }
-
         .contact-icon {
             font-size: 20px;
             color: var(--gold-primary);
             transition: all 0.3s ease;
         }
-
         .contact-item:hover .contact-icon {
             transform: scale(1.3) rotate(15deg);
         }
-
         .languages {
             display: flex;
             justify-content: center;
@@ -476,7 +437,6 @@
             margin: 30px 0;
             flex-wrap: wrap;
         }
-
         .language-tag {
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
             color: var(--dark-primary);
@@ -489,7 +449,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .language-tag::before {
             content: '';
             position: absolute;
@@ -500,16 +459,13 @@
             background: rgba(255, 255, 255, 0.3);
             transition: left 0.3s ease;
         }
-
         .language-tag:hover::before {
             left: 0;
         }
-
         .language-tag:hover {
             transform: translateY(-3px) scale(1.1);
             box-shadow: 0 10px 25px var(--shadow-gold);
         }
-
         /* Game Button */
         .game-button {
             background: linear-gradient(135deg, var(--green-natural), var(--green-light));
@@ -525,7 +481,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .game-button::before {
             content: '';
             position: absolute;
@@ -536,16 +491,13 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
             transition: left 0.5s ease;
         }
-
         .game-button:hover::before {
             left: 100%;
         }
-
         .game-button:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 15px 30px rgba(74, 124, 89, 0.4);
         }
-
         /* Sections */
         .section {
             margin: 60px 0;
@@ -559,12 +511,10 @@
             overflow: hidden;
             transition: all 0.3s ease;
         }
-
         .section:hover {
             transform: translateY(-5px);
             box-shadow: 0 25px 70px var(--shadow-dark);
         }
-
         .section::before {
             content: '';
             position: absolute;
@@ -575,11 +525,9 @@
             background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
             transition: left 0.5s ease;
         }
-
         .section:hover::before {
             left: 0;
         }
-
         .section h2 {
             color: var(--gold-primary);
             margin-bottom: 30px;
@@ -591,12 +539,10 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .section h2:hover {
             transform: scale(1.05);
             text-shadow: 0 0 20px var(--gold-primary);
         }
-
         .section h2::after {
             content: '';
             position: absolute;
@@ -609,11 +555,9 @@
             border-radius: 2px;
             transition: width 0.5s ease;
         }
-
         .section:hover h2::after {
             width: 80px;
         }
-
         /* Skills Grid */
         .skills-grid {
             display: grid;
@@ -621,7 +565,6 @@
             gap: 25px;
             margin-top: 30px;
         }
-
         .skill-category {
             background: rgba(58, 58, 58, 0.8);
             padding: 30px 20px;
@@ -633,7 +576,6 @@
             backdrop-filter: blur(10px);
             cursor: pointer;
         }
-
         .skill-category::before {
             content: '';
             position: absolute;
@@ -644,18 +586,15 @@
             background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
             transition: left 0.6s ease;
         }
-
         .skill-category:hover::before {
             left: 100%;
         }
-
         .skill-category:hover {
             transform: translateY(-10px) scale(1.02);
             background: rgba(58, 58, 58, 0.9);
             box-shadow: 0 20px 50px var(--shadow-gold);
             border-color: var(--gold-light);
         }
-
         .skill-category h3 {
             color: var(--gold-primary);
             margin-bottom: 20px;
@@ -665,16 +604,13 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-
         .skill-category:hover h3 {
             transform: scale(1.1);
             text-shadow: 0 0 15px var(--gold-primary);
         }
-
         .skill-list {
             list-style: none;
         }
-
         .skill-list li {
             padding: 12px 0;
             color: var(--cream);
@@ -685,7 +621,6 @@
             position: relative;
             padding-left: 25px;
         }
-
         .skill-list li::before {
             content: '⭐';
             position: absolute;
@@ -693,7 +628,6 @@
             color: var(--gold-primary);
             transition: all 0.3s ease;
         }
-
         .skill-list li:hover {
             color: var(--gold-primary);
             transform: translateX(15px);
@@ -701,11 +635,9 @@
             border-radius: 10px;
             padding-left: 30px;
         }
-
         .skill-list li:hover::before {
             transform: scale(1.5) rotate(180deg);
         }
-
         /* Click Counter Game */
         .click-game {
             text-align: center;
@@ -715,7 +647,6 @@
             border-radius: 20px;
             border: 2px solid var(--green-natural);
         }
-
         .click-target {
             width: 100px;
             height: 100px;
@@ -732,16 +663,13 @@
             font-weight: bold;
             position: relative;
         }
-
         .click-target:hover {
             transform: scale(1.1);
             box-shadow: 0 0 30px var(--gold-primary);
         }
-
         .click-target:active {
             transform: scale(0.9);
         }
-
         /* Footer */
         footer {
             background: rgba(26, 26, 26, 0.95);
@@ -752,7 +680,6 @@
             border-top: 2px solid var(--gold-primary);
             backdrop-filter: blur(20px);
         }
-
         .footer-content {
             display: flex;
             justify-content: center;
@@ -761,7 +688,6 @@
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
-
         .download-cv {
             background: linear-gradient(135deg, var(--green-natural), var(--green-light));
             color: white;
@@ -776,13 +702,11 @@
             font-family: 'Playfair Display', serif;
             font-size: 16px;
         }
-
         .download-cv:hover {
             background: linear-gradient(135deg, var(--green-light), var(--green-natural));
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(74, 124, 89, 0.4);
         }
-
         .social-links a {
             color: var(--gold-primary);
             text-decoration: none;
@@ -790,23 +714,19 @@
             transition: all 0.3s ease;
             font-size: 16px;
         }
-
         .social-links a:hover {
             color: var(--gold-light);
             transform: scale(1.1);
             text-shadow: 0 0 10px var(--gold-primary);
         }
-
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .container {
                 padding: 0 10px;
             }
-
             .mobile-menu-btn {
                 display: block;
             }
-
             nav {
                 display: none;
                 position: absolute;
@@ -819,141 +739,113 @@
                 border-radius: 0 0 20px 20px;
                 padding: 20px;
             }
-
             nav.active {
                 display: block;
             }
-
             nav ul {
                 flex-direction: column;
                 gap: 10px;
             }
-
             nav a {
                 display: block;
                 text-align: center;
                 padding: 15px;
             }
-
             .hero-content {
                 padding: 30px 20px;
                 margin: 10px;
             }
-
             .section {
                 padding: 30px 15px;
                 margin: 30px 10px;
             }
-
             .skills-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-
             .contact-info {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-
             .footer-content {
                 flex-direction: column;
                 gap: 20px;
             }
-
             .score-display {
                 top: 10px;
                 right: 10px;
                 padding: 8px 15px;
                 font-size: 12px;
             }
-
             .hero-image {
                 width: 150px;
                 height: 150px;
             }
-
             .languages {
                 gap: 10px;
             }
-
             .language-tag {
                 padding: 8px 20px;
                 font-size: 13px;
             }
         }
-
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 1.8rem;
             }
-
             .section h2 {
                 font-size: 1.5rem;
             }
-
             .hero-content {
                 padding: 25px 15px;
             }
-
             .section {
                 padding: 25px 15px;
             }
-
             .skill-category {
                 padding: 25px 15px;
             }
-
             .contact-item {
                 padding: 12px;
                 font-size: 14px;
             }
-
             .click-target {
                 width: 80px;
                 height: 80px;
                 font-size: 20px;
             }
         }
-
         /* Animations */
         .bounce-in {
             animation: bounceIn 1s ease;
         }
-
         @keyframes bounceIn {
             0% { transform: scale(0.3); opacity: 0; }
             50% { transform: scale(1.05); }
             70% { transform: scale(0.9); }
             100% { transform: scale(1); opacity: 1; }
         }
-
         .slide-in-left {
             animation: slideInLeft 0.8s ease;
         }
-
         @keyframes slideInLeft {
             from { transform: translateX(-100px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
-
         .slide-in-right {
             animation: slideInRight 0.8s ease;
         }
-
         @keyframes slideInRight {
             from { transform: translateX(100px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
-
         .fade-in-up {
             animation: fadeInUp 0.8s ease;
         }
-
         @keyframes fadeInUp {
             from { transform: translateY(50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-
         /* Notification */
         .notification {
             position: fixed;
@@ -978,37 +870,34 @@
     <div class="score-display" id="scoreDisplay">
         🏆 Score: <span id="score">0</span> | Coins: <span id="coins">0</span>
     </div>
-
     <!-- Interactive Background -->
     <div class="interactive-bg" id="interactiveBg"></div>
     <div class="bg-particles" id="bgParticles"></div>
     <div class="floating-coins" id="floatingCoins"></div>
-
     <header id="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo" id="logo">
+                <a href="#home" class="logo" id="logo" aria-label="Sulok Pandey Home">
                     <div class="logo-circle">
-                        <img src="Sulok.jpg" alt="Sulok Pandey Logo">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Sulok Pandey Logo">
                     </div>
                     <h2>Sulok Pandey</h2>
-                </div>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-                <nav id="nav">
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">☰</button>
+                <nav id="nav" aria-label="Main Navigation">
                     <ul>
                         <li><a href="#home">🏠 Home</a></li>
                         <li><a href="#about">👨‍💻 About</a></li>
                         <li><a href="#skills">⚡ Skills</a></li>
                         <li><a href="#education">🎓 Education</a></li>
                         <li><a href="#projects">🚀 Projects</a></li>
-                        <li><a href="https://sulok7.wordpress.com/" target="_blank">📝 Blog</a></li>
+                        <li><a href="https://sulok7.wordpress.com/" target="_blank" rel="noopener noreferrer">📝 Blog</a></li>
                         <li><a href="#contact">📞 Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
-
     <main>
         <div class="container">
             <!-- Hero Section -->
@@ -1016,12 +905,10 @@
                 <div class="hero-content bounce-in">
                     <h1>Welcome! I'm <span class="name-highlight">Sulok Pandey</span></h1>
                     <p class="subtitle">Computer Science Graduate | Full-Stack Developer | Creative Problem Solver</p>
-                    
-                    <div class="hero-image" id="heroImage">
-                        <img src="me.jpg" alt="Sulok Pandey">
+                                        <div class="hero-image" id="heroImage">
+                        <img src="/placeholder.svg?height=180&width=180" alt="Sulok Pandey">
                     </div>
-                    
-                    <div class="contact-info">
+                                        <div class="contact-info">
                         <div class="contact-item">
                             <span class="contact-icon">📞</span>
                             <span>+977-9868940368</span>
@@ -1035,13 +922,11 @@
                             <span>Dhapasi Height, Tokha, Kathmandu</span>
                         </div>
                     </div>
-                    
-                    <div class="languages">
+                                        <div class="languages">
                         <span class="language-tag">English</span>
                         <span class="language-tag">Nepali</span>
                         <span class="language-tag">Hindi</span>
                     </div>
-
                     <div class="click-game">
                         <h3 style="color: var(--gold-primary); margin-bottom: 15px;">🎮 Click Game - Test Your Speed!</h3>
                         <div class="click-target" id="clickTarget">🎯</div>
@@ -1051,19 +936,15 @@
                     </div>
                 </div>
             </section>
-
             <!-- About Section -->
             <section id="about" class="section fade-in-up">
                 <h2>👨‍💻 About Me</h2>
                 <div style="font-size: 1.1rem; line-height: 1.8; color: var(--cream); text-align: center; max-width: 800px; margin: 0 auto;">
                     <p style="margin-bottom: 20px; transition: all 0.3s ease; padding: 15px; border-radius: 15px; cursor: pointer;" onmouseover="this.style.background='rgba(212, 175, 55, 0.1)'" onmouseout="this.style.background=''">A motivated and hardworking Computer Science graduate, committed to delivering excellence and continuous growth. I bring a confident and competent attitude, with a strong desire to apply my skills and contribute meaningfully to any organization I join.</p>
-                    
-                    <p style="margin-bottom: 20px; transition: all 0.3s ease; padding: 15px; border-radius: 15px; cursor: pointer;" onmouseover="this.style.background='rgba(212, 175, 55, 0.1)'" onmouseout="this.style.background=''">Currently awaiting graduation after completing my BSc (Hons) in Computer Science from Herald College Kathmandu. I have developed expertise in full-stack development, problem-solving, and logical programming through various academic projects and practical applications.</p>
-                    
-                    <p style="transition: all 0.3s ease; padding: 15px; border-radius: 15px; cursor: pointer;" onmouseover="this.style.background='rgba(212, 175, 55, 0.1)'" onmouseout="this.style.background=''">Welcome to my personal website where you can learn about my interests, skills, education, and projects. Take a look around and feel free to explore - think of it as your own place!</p>
+                                        <p style="margin-bottom: 20px; transition: all 0.3s ease; padding: 15px; border-radius: 15px; cursor: pointer;" onmouseover="this.style.background='rgba(212, 175, 55, 0.1)'" onmouseout="this.style.background=''">Currently awaiting graduation after completing my BSc (Hons) in Computer Science from Herald College Kathmandu. I have developed expertise in full-stack development, problem-solving, and logical programming through various academic projects and practical applications.</p>
+                                        <p style="transition: all 0.3s ease; padding: 15px; border-radius: 15px; cursor: pointer;" onmouseover="this.style.background='rgba(212, 175, 55, 0.1)'" onmouseout="this.style.background=''">Welcome to my personal website where you can learn about my interests, skills, education, and projects. Take a look around and feel free to explore - think of it as your own place!</p>
                 </div>
             </section>
-
             <!-- Skills Section -->
             <section id="skills" class="section fade-in-up">
                 <h2>⚡ Skills & Expertise</h2>
@@ -1100,14 +981,12 @@
                     </div>
                 </div>
             </section>
-
             <!-- Education Section -->
             <section id="education" class="section fade-in-up">
                 <h2>🎓 Education Journey</h2>
                 <div style="max-width: 800px; margin: 30px auto; position: relative;">
                     <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: linear-gradient(var(--gold-primary), var(--gold-dark)); transform: translateX(-50%); border-radius: 2px;"></div>
-                    
-                    <div style="background: rgba(58, 58, 58, 0.9); padding: 25px; border-radius: 20px; margin-bottom: 30px; border: 2px solid var(--gold-primary); transition: all 0.4s ease; position: relative; width: calc(50% - 20px); margin-left: auto; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 40px rgba(212, 175, 55, 0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow=''">
+                                        <div style="background: rgba(58, 58, 58, 0.9); padding: 25px; border-radius: 20px; margin-bottom: 30px; border: 2px solid var(--gold-primary); transition: all 0.4s ease; position: relative; width: calc(50% - 20px); margin-left: auto; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 40px rgba(212, 175, 55, 0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow=''">
                         <div style="position: absolute; width: 20px; height: 20px; background: var(--gold-primary); border-radius: 50%; top: 50%; left: -30px; transform: translateY(-50%); border: 4px solid var(--dark-primary);"></div>
                         <h3 style="color: var(--gold-primary); margin-bottom: 10px; font-family: 'Playfair Display', serif;">Bachelor's Degree in Computer Science</h3>
                         <div style="color: var(--green-light); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Herald College Kathmandu</div>
@@ -1115,15 +994,13 @@
                         <div style="color: var(--cream); font-style: italic; font-size: 14px;">2022-2025</div>
                         <div style="color: var(--green-natural); font-weight: 600; font-size: 16px;">Currently Awaiting Graduation</div>
                     </div>
-                    
-                    <div style="background: rgba(58, 58, 58, 0.9); padding: 25px; border-radius: 20px; margin-bottom: 30px; border: 2px solid var(--gold-primary); transition: all 0.4s ease; position: relative; width: calc(50% - 20px); cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 40px rgba(212, 175, 55, 0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow=''">
+                                        <div style="background: rgba(58, 58, 58, 0.9); padding: 25px; border-radius: 20px; margin-bottom: 30px; border: 2px solid var(--gold-primary); transition: all 0.4s ease; position: relative; width: calc(50% - 20px); cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 40px rgba(212, 175, 55, 0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow=''">
                         <div style="position: absolute; width: 20px; height: 20px; background: var(--gold-primary); border-radius: 50%; top: 50%; right: -30px; transform: translateY(-50%); border: 4px solid var(--dark-primary);"></div>
                         <h3 style="color: var(--gold-primary); margin-bottom: 10px; font-family: 'Playfair Display', serif;">High School Degree in Science</h3>
                         <div style="color: var(--green-light); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Herald Secondary School, Basundhara, Kathmandu</div>
                         <div style="color: var(--green-natural); font-weight: 600; font-size: 16px;">Grade: 3.39 (A)</div>
                     </div>
-                    
-                    <div style="background: rgba(58, 58, 58, 0.9); padding: 25px; border-radius: 20px; border: 2px solid var(--gold-primary); transition: all 0.4s ease; position: relative; width: calc(50% - 20px); margin-left: auto; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 40px rgba(212, 175, 55, 0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow=''">
+                                        <div style="background: rgba(58, 58, 58, 0.9); padding: 25px; border-radius: 20px; border: 2px solid var(--gold-primary); transition: all 0.4s ease; position: relative; width: calc(50% - 20px); margin-left: auto; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 40px rgba(212, 175, 55, 0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow=''">
                         <div style="position: absolute; width: 20px; height: 20px; background: var(--gold-primary); border-radius: 50%; top: 50%; left: -30px; transform: translateY(-50%); border: 4px solid var(--dark-primary);"></div>
                         <h3 style="color: var(--gold-primary); margin-bottom: 10px; font-family: 'Playfair Display', serif;">Secondary Education Examination (S.E.E)</h3>
                         <div style="color: var(--green-light); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Araniko English Boarding School, Madhuban, Bardiya</div>
@@ -1131,36 +1008,30 @@
                     </div>
                 </div>
             </section>
-
             <!-- Projects Section -->
             <section id="projects" class="section fade-in-up">
                 <h2>🚀 Featured Projects</h2>
-                
-                <div style="background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); color: var(--dark-primary); padding: 30px; border-radius: 25px; margin: 30px 0; text-align: center; position: relative; overflow: hidden; box-shadow: 0 20px 60px var(--shadow-gold); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px) scale(1.02)'; this.style.boxShadow='0 30px 80px rgba(212, 175, 55, 0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 20px 60px rgba(212, 175, 55, 0.3)'">
+                                <div style="background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); color: var(--dark-primary); padding: 30px; border-radius: 25px; margin: 30px 0; text-align: center; position: relative; overflow: hidden; box-shadow: 0 20px 60px var(--shadow-gold); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px) scale(1.02)'; this.style.boxShadow='0 30px 80px rgba(212, 175, 55, 0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 20px 60px rgba(212, 175, 55, 0.3)'">
                     <h3 style="font-size: 1.8rem; margin-bottom: 15px; font-family: 'Playfair Display', serif;">🏠 Hamro Sewa - Household Services Platform</h3>
                     <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 15px;">A comprehensive full-stack platform built using React and .NET C#, designed to allow users to conveniently hire professionals for household services. This project demonstrates my capability to design, develop, and deploy practical, user-focused solutions using modern web technologies.</p>
                     <p style="margin-bottom: 15px;"><strong>Key Features:</strong> User registration, service booking, professional profiles, payment integration, and real-time notifications.</p>
                     <p><strong>Technologies Used:</strong> React.js, .NET C#, Database Management, RESTful APIs, Full-Stack Development</p>
                 </div>
-                
-                <div style="background: rgba(58, 58, 58, 0.9); padding: 25px; border-radius: 20px; margin-top: 20px; border: 2px solid var(--green-natural); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(58, 58, 58, 0.95)'; this.style.boxShadow='0 15px 40px rgba(74, 124, 89, 0.2)'; this.style.borderColor='var(--green-light)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(58, 58, 58, 0.9)'; this.style.boxShadow=''; this.style.borderColor='var(--green-natural)'">
+                                <div style="background: rgba(58, 58, 58, 0.9); padding: 25px; border-radius: 20px; margin-top: 20px; border: 2px solid var(--green-natural); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(58, 58, 58, 0.95)'; this.style.boxShadow='0 15px 40px rgba(74, 124, 89, 0.2)'; this.style.borderColor='var(--green-light)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(58, 58, 58, 0.9)'; this.style.boxShadow=''; this.style.borderColor='var(--green-natural)'">
                     <h3 style="color: var(--green-light); margin-bottom: 15px; font-size: 1.5rem; font-family: 'Playfair Display', serif;">💰 Tax Calculation System</h3>
                     <p style="color: var(--cream); line-height: 1.6; margin-bottom: 10px;">Developed a comprehensive tax calculation tool demonstrating algorithm design and problem-solving skills. This project showcases my ability to create practical solutions for real-world financial problems with accurate calculations and user-friendly interface.</p>
                     <p style="color: var(--cream);"><strong>Technologies:</strong> Algorithm Design, Mathematical Computing, User Interface Development</p>
                 </div>
-                
-                <div style="background: rgba(58, 58, 58, 0.9); padding: 25px; border-radius: 20px; margin-top: 20px; border: 2px solid var(--green-natural); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(58, 58, 58, 0.95)'; this.style.boxShadow='0 15px 40px rgba(74, 124, 89, 0.2)'; this.style.borderColor='var(--green-light)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(58, 58, 58, 0.9)'; this.style.boxShadow=''; this.style.borderColor='var(--green-natural)'">
+                                <div style="background: rgba(58, 58, 58, 0.9); padding: 25px; border-radius: 20px; margin-top: 20px; border: 2px solid var(--green-natural); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(58, 58, 58, 0.95)'; this.style.boxShadow='0 15px 40px rgba(74, 124, 89, 0.2)'; this.style.borderColor='var(--green-light)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(58, 58, 58, 0.9)'; this.style.boxShadow=''; this.style.borderColor='var(--green-natural)'">
                     <h3 style="color: var(--green-light); margin-bottom: 15px; font-size: 1.5rem; font-family: 'Playfair Display', serif;">🔧 Additional Academic Projects</h3>
                     <p style="color: var(--cream); line-height: 1.6;">Throughout my academic journey, I have undertaken several projects that reflect my programming skills and problem-solving abilities, including algorithm design challenges, data structure implementations, and various programming assignments that have strengthened my foundation in computer science.</p>
                 </div>
             </section>
-
             <!-- Contact Section -->
             <section id="contact" class="section fade-in-up">
                 <h2>📞 Get In Touch</h2>
                 <p style="text-align: center; margin-bottom: 30px; font-size: 1.1rem; color: var(--cream);">I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 30px;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 30px;">
                     <div style="background: rgba(58, 58, 58, 0.9); padding: 30px; border-radius: 25px; text-align: center; border: 2px solid var(--gold-primary); backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-10px)'; this.style.background='rgba(58, 58, 58, 0.95)'; this.style.boxShadow='0 20px 50px rgba(212, 175, 55, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(58, 58, 58, 0.9)'; this.style.boxShadow=''">
                         <h3 style="color: var(--gold-primary); margin-bottom: 20px; font-size: 1.4rem; font-family: 'Playfair Display', serif;">📞 Contact Information</h3>
                         <div style="color: var(--cream);">
@@ -1178,24 +1049,23 @@
                             </div>
                             <div style="display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s ease; padding: 8px; border-radius: 10px; cursor: pointer;" onmouseover="this.style.background='rgba(212, 175, 55, 0.1)'; this.style.color='var(--gold-primary)'; this.style.transform='scale(1.05)'" onmouseout="this.style.background=''; this.style.color='var(--cream)'; this.style.transform='scale(1)'">
                                 <span>💼</span>
-                                <a href="https://www.linkedin.com/in/sulok-pandey-345480259/" target="_blank" style="color: var(--gold-primary); text-decoration: none;">LinkedIn Profile</a>
+                                <a href="https://www.linkedin.com/in/sulok-pandey-345480259/" target="_blank" rel="noopener noreferrer" style="color: var(--gold-primary); text-decoration: none;">LinkedIn Profile</a>
                             </div>
                         </div>
                     </div>
-                    
-                    <div style="background: rgba(58, 58, 58, 0.9); padding: 30px; border-radius: 25px; border: 2px solid var(--gold-primary); backdrop-filter: blur(10px); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(58, 58, 58, 0.95)'; this.style.boxShadow='0 15px 40px rgba(0, 0, 0, 0.1)'" onmouseout="this.style.background='rgba(58, 58, 58, 0.9)'; this.style.boxShadow=''">
+                                        <div style="background: rgba(58, 58, 58, 0.9); padding: 30px; border-radius: 25px; border: 2px solid var(--gold-primary); backdrop-filter: blur(10px); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(58, 58, 58, 0.95)'; this.style.boxShadow='0 15px 40px rgba(0, 0, 0, 0.1)'" onmouseout="this.style.background='rgba(58, 58, 58, 0.9)'; this.style.boxShadow=''">
                         <h3 style="color: var(--gold-primary); margin-bottom: 20px; text-align: center; font-size: 1.4rem; font-family: 'Playfair Display', serif;">💬 Leave a Message</h3>
                         <form onsubmit="submitMessage(event)">
                             <div style="margin-bottom: 20px;">
-                                <label style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500; font-size: 16px;">Your Name</label>
+                                <label for="name" style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500; font-size: 16px;">Your Name</label>
                                 <input type="text" id="name" name="name" required style="width: 100%; padding: 12px; border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 15px; font-family: inherit; font-size: 14px; background: rgba(245, 245, 220, 0.1); color: var(--text-light); backdrop-filter: blur(10px); transition: all 0.3s ease;" onfocus="this.style.borderColor='var(--gold-primary)'; this.style.boxShadow='0 0 20px rgba(212, 175, 55, 0.2)'; this.style.background='rgba(245, 245, 220, 0.15)'; this.style.transform='translateY(-2px)'" onblur="this.style.borderColor='rgba(212, 175, 55, 0.3)'; this.style.boxShadow=''; this.style.background='rgba(245, 245, 220, 0.1)'; this.style.transform='translateY(0)'">
                             </div>
                             <div style="margin-bottom: 20px;">
-                                <label style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500; font-size: 16px;">Your Email</label>
+                                <label for="email" style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500; font-size: 16px;">Your Email</label>
                                 <input type="email" id="email" name="email" required style="width: 100%; padding: 12px; border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 15px; font-family: inherit; font-size: 14px; background: rgba(245, 245, 220, 0.1); color: var(--text-light); backdrop-filter: blur(10px); transition: all 0.3s ease;" onfocus="this.style.borderColor='var(--gold-primary)'; this.style.boxShadow='0 0 20px rgba(212, 175, 55, 0.2)'; this.style.background='rgba(245, 245, 220, 0.15)'; this.style.transform='translateY(-2px)'" onblur="this.style.borderColor='rgba(212, 175, 55, 0.3)'; this.style.boxShadow=''; this.style.background='rgba(245, 245, 220, 0.1)'; this.style.transform='translateY(0)'">
                             </div>
                             <div style="margin-bottom: 20px;">
-                                <label style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500; font-size: 16px;">Your Message</label>
+                                <label for="message" style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500; font-size: 16px;">Your Message</label>
                                 <textarea id="message" name="message" placeholder="Tell me about your project or just say hello!" required style="width: 100%; padding: 12px; border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 15px; font-family: inherit; font-size: 14px; background: rgba(245, 245, 220, 0.1); color: var(--text-light); backdrop-filter: blur(10px); transition: all 0.3s ease; resize: vertical; min-height: 120px;" onfocus="this.style.borderColor='var(--gold-primary)'; this.style.boxShadow='0 0 20px rgba(212, 175, 55, 0.2)'; this.style.background='rgba(245, 245, 220, 0.15)'; this.style.transform='translateY(-2px)'" onblur="this.style.borderColor='rgba(212, 175, 55, 0.3)'; this.style.boxShadow=''; this.style.background='rgba(245, 245, 220, 0.1)'; this.style.transform='translateY(0)'"></textarea>
                             </div>
                             <button type="submit" style="background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); color: var(--dark-primary); padding: 12px 30px; border: none; border-radius: 30px; cursor: pointer; font-size: 16px; font-weight: 600; transition: all 0.3s ease; width: 100%; font-family: 'Playfair Display', serif; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 40px rgba(212, 175, 55, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow=''" onmousedown="this.style.transform='translateY(-1px)'" onmouseup="this.style.transform='translateY(-3px)'">
@@ -1207,24 +1077,22 @@
             </section>
         </div>
     </main>
-
     <footer>
         <div class="container">
             <div class="footer-content">
-                <a href="CV.png" download class="download-cv">
+                <a href="/placeholder.svg?height=100&width=100" download class="download-cv">
                     📄 Download My CV
                 </a>
                 <div class="social-links">
-                    <a href="https://linkedin.com/in/sulokpandey" target="_blank">LinkedIn Profile</a>
+                    <a href="https://linkedin.com/in/sulokpandey" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
                     <span style="color: #666; margin: 0 15px;">|</span>
-                    <a href="https://sulok7.wordpress.com/" target="_blank">Visit My Blog</a>
+                    <a href="https://sulok7.wordpress.com/" target="_blank" rel="noopener noreferrer">Visit My Blog</a>
                 </div>
             </div>
             <p style="color: var(--cream); margin-top: 20px;">Copyright © 2023 by Sulok Pandey. All rights reserved.</p>
             <p style="color: var(--cream); font-size: 14px; margin-top: 5px;">Built with passion for web development 💻</p>
         </div>
     </footer>
-
     <script>
         // Game Variables
         let score = 0;
@@ -1232,19 +1100,16 @@
         let gameActive = false;
         let speedGameActive = false;
         let speedGameTimer = null;
-
         // Initialize Game Elements
         function initGame() {
             createFloatingCoins();
             createBackgroundParticles();
             updateScoreDisplay();
         }
-
         // Create Floating Coins
         function createFloatingCoins() {
             const container = document.getElementById('floatingCoins');
             const numberOfCoins = 8;
-
             for (let i = 0; i < numberOfCoins; i++) {
                 const coin = document.createElement('div');
                 coin.className = 'coin';
@@ -1255,15 +1120,13 @@
                 container.appendChild(coin);
             }
         }
-
         // Collect Coin Function
         function collectCoin(event) {
             coins++;
             score += 5;
             updateScoreDisplay();
             event.target.remove();
-            
-            // Re-create the coin after it's collected
+                        // Re-create the coin after it's collected
             const container = document.getElementById('floatingCoins');
             const coin = document.createElement('div');
             coin.className = 'coin';
@@ -1273,12 +1136,10 @@
             coin.addEventListener('click', collectCoin);
             container.appendChild(coin);
         }
-
         // Create Background Particles
         function createBackgroundParticles() {
             const container = document.getElementById('bgParticles');
             const numberOfParticles = 50;
-
             for (let i = 0; i < numberOfParticles; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
@@ -1290,32 +1151,27 @@
                 container.appendChild(particle);
             }
         }
-
         // Update Score Display
         function updateScoreDisplay() {
             document.getElementById('score').innerText = score;
             document.getElementById('coins').innerText = coins;
         }
-
         // Add Score Function
         function addScore(points) {
             score += points;
             updateScoreDisplay();
             showNotification(`+${points} points!`);
         }
-
         // Show Notification
         function showNotification(message) {
             const notification = document.createElement('div');
             notification.className = 'notification';
             notification.innerText = message;
             document.body.appendChild(notification);
-
             setTimeout(() => {
                 notification.remove();
             }, 2000);
         }
-
         // Start Speed Game
         function startSpeedGame() {
             if (speedGameActive) return;
@@ -1323,16 +1179,12 @@
             score = 0;
             coins = 0;
             updateScoreDisplay();
-
             const clickTarget = document.getElementById('clickTarget');
             let timeLeft = 10;
-
             clickTarget.innerText = timeLeft;
-
             speedGameTimer = setInterval(() => {
                 timeLeft--;
                 clickTarget.innerText = timeLeft > 0 ? timeLeft : "GO!";
-
                 if (timeLeft <= 0) {
                     clearInterval(speedGameTimer);
                     speedGameActive = false;
@@ -1341,7 +1193,6 @@
                 }
             }, 1000);
         }
-
         // Reset Game Function
         function resetGame() {
             score = 0;
@@ -1349,28 +1200,23 @@
             updateScoreDisplay();
             showNotification('Game Reset!');
         }
-
         // Submit Message Function
         function submitMessage(event) {
             event.preventDefault();
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-
             // Basic validation
             if (!name || !email || !message) {
                 showNotification('Please fill in all fields!');
                 return;
             }
-
             showNotification(`Message sent successfully! Thank you, ${name}!`);
-
             // Clear the form
             document.getElementById('name').value = '';
             document.getElementById('email').value = '';
             document.getElementById('message').value = '';
         }
-
         // Header Scroll Function
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
@@ -1380,28 +1226,24 @@
                 header.classList.remove('scrolled');
             }
         });
-
         // Mobile Menu Function
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const nav = document.getElementById('nav');
-
             mobileMenuBtn.addEventListener('click', function() {
                 nav.classList.toggle('active');
+                mobileMenuBtn.setAttribute('aria-expanded', nav.classList.contains('active'));
             });
         });
-
         // Click Target Function
         document.addEventListener('DOMContentLoaded', function() {
             const clickTarget = document.getElementById('clickTarget');
-
             clickTarget.addEventListener('click', function() {
                 if (speedGameActive) {
                     addScore(1);
                 }
             });
         });
-
         // Initialize Game on Load
         window.onload = initGame;
     </script>
